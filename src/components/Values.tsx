@@ -1,40 +1,53 @@
-import valuesImage from "../assets/values-image.png";
+import heroImg from "../assets/values-image.png";
 import { values } from "../data/values";
 
-const Values = () => {
-  return (
-    <section className="py-16 px-4 sm:px-6 text-white font-sans bg-black">
-      {/* Title */}
-      <h2 className="text-sm uppercase font-bold tracking-wider mb-10 flex items-center gap-2">
-        <span className="text-xl">●</span> Our Values
-      </h2>
 
-      {/* Content Layout */}
-      <div className="flex flex-col lg:flex-row gap-10">
-        {/* Left: Image */}
-        <div className="w-full lg:w-1/2">
+export const Values: React.FC = () => (
+  <section className="bg-black text-white font-alumni">
+    <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* header */}
+      <header className="flex items-center gap-2 py-10">
+        <span className="w-2 h-2 rounded-full bg-white shrink-0" />
+        <h2 className="uppercase tracking-widest text-sm font-semibold">
+          Our Values
+        </h2>
+      </header>
+
+      <div className="h-px lg:h-[2px] w-full bg-white/80 mb-12" />
+
+      <div className="lg:grid lg:grid-cols-3 lg:grid-rows-7 gap-x-12">
+        {/* fluid-scaling image */}
+        <figure className="mb-12 lg:mb-0 w-[220px] shrink-0 lg:col-span-1 lg:row-start-1 lg:row-span-2">
           <img
-            src={valuesImage}
-            alt="Tablet with analytics chart"
-            className="w-full h-auto object-cover rounded"
+            src={heroImg}
+            alt="Tablet with growth chart"
+            className="w-full h-full object-cover"
           />
-        </div>
+        </figure>
 
-        {/* Right: Values List */}
-        <div className="w-full lg:w-1/2 flex flex-col gap-6">
-          {values.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col gap-2 border-y border-white py-4"
+        {/* ordered list */}
+        <ol className="flex-1 lg:col-start-2 lg:col-span-2 lg:row-start-3 lg:row-span-5">
+          {values.map((v, idx) => (
+            <li
+              key={v.id}
+              className={`grid lg:grid-cols-[auto_20rem_1fr] lg:gap-x-0 py-8 border-t-2 border-white/80 ${
+                idx === values.length - 1 ? "border-b-2 border-white/80" : ""
+              }`}
             >
-              <div className="text-xl font-bold">{`{${item.id}}`}</div>
-              <p className="text-sm leading-relaxed">{item.text}</p>
-            </div>
+              <span className="text-3xl lg:text-4xl font-bold shrink-0 lg:col-start-1 lg:justify-self-end">
+                {"{"}
+                {v.id}
+                {"}"}
+              </span>
+              <p className="text-2xl leading-[150%] tracking-normal lg:max-w-lg lg:col-start-3">
+                {v.description}
+              </p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Values;
