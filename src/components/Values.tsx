@@ -26,13 +26,11 @@ export const Values: React.FC = () => (
         </figure>
 
         {/* ordered list */}
-        <ol className="flex-1 lg:col-start-2 lg:col-span-2 lg:row-start-3 lg:row-span-5">
-          {values.map((v, idx) => (
+        <ol className="flex-1 gap-y-6 lg:col-start-2 lg:col-span-2 lg:row-start-3 lg:row-span-5">
+          {values.map((v) => (
             <li
               key={v.id}
-              className={`grid lg:grid-cols-[auto_20rem_1fr] lg:gap-x-0 py-8 border-t-2 border-white/80 ${
-                idx === values.length - 1 ? "border-b-2 border-white/80" : ""
-              }`}
+              className={`grid lg:grid-cols-[auto_20rem_1fr] lg:gap-x-0 py-4 sm:py-8 mb-6 border-t-2 border-b-2 border-white/80` } 
             >
               <span className="text-3xl lg:text-4xl font-bold shrink-0 lg:col-start-1 lg:justify-self-end">
                 {"{"}
